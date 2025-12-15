@@ -42,16 +42,16 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 
 * **🖼️ Evidence (BPMN Diagram):**
+---
     ![BPMN Diagram](screenshots/database_objects/bpmn_io.jpeg)
 ---
-
 ## **PHASE III: Logical Database Design**
 **Objective:** Design a normalized Entity-Relationship (ER) model.
 
 * **Explanation:** The database uses a **3NF schema** to ensure data integrity. The Logical Data Model details all core entities (**Patients, Nurses, Bookings, Services, Visit Logs**) and their relationships.
 * **📄 Documentation:**
-* [View Logical Data Model Report (PDF)](https://www.google.com/search?q=documentation/Grp_28888_Gerardine_Nursing_DataModel.pdf)
-* [View Data Dictionary](https://www.google.com/search?q=documentation/data_dictionary.md)
+* [View Logical Data Model Report (PDF)](documentation/logical_data_model_documentation.pdf)
+* [View Data Dictionary](documentation/data_dictionary.md)
 
 
 * **🖼️ Evidence (ER Diagram):**
