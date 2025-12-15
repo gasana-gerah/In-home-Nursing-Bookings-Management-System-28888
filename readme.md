@@ -28,7 +28,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 * Ensure strict compliance with **Visit Logging** (Start/End times).
 
 
-* **Key Deliverable:** [Project Overview & Objectives (PPT)](https://www.google.com/search?q=documentation/Grp_28888_Gerardine_NursingBooking_DB.pptx)
+* **Key Deliverable:** [Project Overview & Objectives](documentation/IN_HOME_NURSING_BOOKINGS_MANAGEMENT_SYSTEM.pdf)
 
 ---
 
