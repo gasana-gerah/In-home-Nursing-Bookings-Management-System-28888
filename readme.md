@@ -3,6 +3,7 @@
 ---
 
 **Student Information**
+
 * **Name:** Gerardine GASANA
 * **Student ID:** 28888
 * **Institution:** Adventist University of Central Africa (AUCA)
@@ -20,19 +21,20 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 ---
 
-## **PHASE I: Problem Identification*** **Current Issue:** Manual phone coordination for home care leads to double-bookings and dangerous missed visits.
+## **PHASE I: Problem Identification*** **Current Issue:** Manual phone coordination for home care leads to double-bookings and dangerous missed visits
+
 * **Pain Points:** Lack of audit trails makes compliance impossible; manual nurse matching is slow and geographically inefficient.
 * **Key Goals:**
 * Reduce double bookings to **0** via database constraints.
 * Automate **Nurse-to-Patient matching** based on Skills (e.g., Wound Care) and Proximity.
 * Ensure strict compliance with **Visit Logging** (Start/End times).
 
-
 * **Key Deliverable:** [Project Overview & Objectives](documentation/IN_HOME_NURSING_BOOKINGS_MANAGEMENT_SYSTEM.pdf)
 
 ---
 
 ## **PHASE II: Business Process Modeling**
+
 **Objective:** Model the business flow and system architecture.
 
 * **Explanation:** The Business Process Model (BPMN) illustrates the end-to-end flow from **"Patient Booking Request"** to **"Nurse Dispatch"** and final **"Visit Log Verification."** It includes automated decision nodes for validating nurse availability and compliance.
@@ -40,11 +42,13 @@ This repository is organized according to the 8-Phase Capstone Project structure
 * [View Business Process Model (BPMN Explanation)](documentation/Modeling_Explanation_28888_Gasana_Gerardine_NursingBooking_Process.pdf)
 * [View System Architecture](documentation/architecture.md)
 
-
 * **🖼️ Evidence (BPMN Diagram):**
     ![BPMN Diagram](screenshots/database_objects/bpmn_io.jpeg)
+
 ---
+
 ## **PHASE III: Logical Database Design**
+
 **Objective:** Design a normalized Entity-Relationship (ER) model.
 
 * **Explanation:** The database uses a **3NF schema** to ensure data integrity. The Logical Data Model details all core entities (**Patients, Nurses, Bookings, Services, Visit Logs**) and their relationships.
@@ -52,13 +56,13 @@ This repository is organized according to the 8-Phase Capstone Project structure
 * [View Logical Data Model Report (PDF)](documentation/logical_data_model_documentation.pdf)
 * [View Data Dictionary](documentation/data_dictionary.md)
 
-
 * **🖼️ Evidence (ER Diagram):**
     ![BPMN Diagram](screenshots/database_objects/erd.jpeg)
 
 ---
 
 ## **PHASE IV: Database Creation**
+
 **Objective:** Configure the Oracle PDB and Environment.
 
 * **Explanation:** Created the `NURSING_DB` pluggable database, configured `TBS_NURSING_DATA` tablespaces, and established the `ADMIN_NURSE` user with appropriate privileges.
@@ -67,6 +71,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 ---
 
 ## **PHASE V: Table Implementation & Data**
+
 **Objective:** Create physical tables and populate with realistic data.
 
 * **Explanation:** 10 Tables were created including `BOOKINGS` (Fact Table) and `ADMIN_CONFIG` (Control Table). A PL/SQL loop generated **500+ realistic booking records** with varying statuses (Completed, Cancelled, Pending) to simulate real-world usage.
@@ -76,6 +81,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 ---
 
 ## **PHASE VI: PL/SQL Development**
+
 **Objective:** Develop Procedures, Functions, and Packages.
 
 * **Explanation:** All core logic is encapsulated in the `PKG_NURSING_OPS` package.
@@ -83,12 +89,12 @@ This repository is organized according to the 8-Phase Capstone Project structure
 * `sp_auto_match`: Finds the best nurse based on **Skill + Rating**.
 * `fn_calculate_cost`: Computes fees based on Service Type and Duration.
 
-
 * **📂 Code:** [Package Specification](database/scripts/06_Package_Spec.sql) | [Package Body](database/scripts/07_Package_Body.sql)
 
 ---
 
 ## **PHASE VII: Advanced Programming & Security**
+
 **Objective:** Implement Triggers, Auditing, and Restriction Rules.
 
 * **CRITICAL RULE:** Administrative changes to `ADMIN_CONFIG` (e.g., Pay Rates) are **BLOCKED** on Weekdays (Mon-Fri) to ensure stability during peak operations.
@@ -104,6 +110,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 ---
 
 ## **PHASE VIII: BI & Analytics**
+
 **Objective:** Dashboards, KPIs, and Performance Tuning.
 
 * **Explanation:** Analytical queries track **Nurse Utilization Rates** and **Missed Visit Ratios**. Performance is optimized using indexes on `scheduled_time` and `nurse_id`.
