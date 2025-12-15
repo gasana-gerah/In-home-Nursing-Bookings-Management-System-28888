@@ -1,37 +1,30 @@
-
-CREATE OR REPLACE PACKAGE pkg_restaurant_ops IS
+CREATE OR REPLACE PACKAGE pkg_nursing_ops IS
     
-    e_insufficient_stock EXCEPTION;
-    e_table_occupied     EXCEPTION;
+    e_nurse_unavailable  EXCEPTION;
     e_invalid_status     EXCEPTION;
+    e_duplicate_booking  EXCEPTION;
 
- 
-    
+    FUNCTION fn_calculate_cost(p_service_id NUMBER) RETURN NUMBER;
 
-    FUNCTION fn_get_stock_level(p_ingredient_id NUMBER) RETURN NUMBER;
+    FUNCTION fn_is_nurse_free(p_nurse_id NUMBER, p_time TIMESTAMP) RETURN VARCHAR2;
 
-    FUNCTION fn_calculate_wait_time(p_order_id NUMBER) RETURN NUMBER;
-    
-
-    FUNCTION fn_is_table_available(p_table_id NUMBER) RETURN VARCHAR2;
-
-
-    PROCEDURE sp_register_customer(
-        p_first_name IN VARCHAR2, 
-        p_last_name IN VARCHAR2, 
-        p_phone IN VARCHAR2, 
-        p_cust_id OUT NUMBER 
+    PROCEDURE sp_request_booking(
+        p_patient_id IN NUMBER,
+        p_service_id IN NUMBER,
+        p_schedule   IN TIMESTAMP,
+        p_booking_id OUT NUMBER
     );
 
-  
-    PROCEDURE sp_place_order(
-        p_table_id IN NUMBER,
-        p_cust_id IN NUMBER,
-        p_menu_id IN NUMBER,
-        p_qty IN NUMBER
+    PROCEDURE sp_auto_match_nurse(
+        p_booking_id IN NUMBER
     );
     
-    PROCEDURE sp_process_kitchen_queue;
+    PROCEDURE sp_log_visit(
+        p_booking_id IN NUMBER,
+        p_actual_start IN TIMESTAMP,
+        p_actual_end IN TIMESTAMP,
+        p_notes IN VARCHAR2
+    );
 
-END pkg_restaurant_ops;
+END pkg_nursing_ops;
 /

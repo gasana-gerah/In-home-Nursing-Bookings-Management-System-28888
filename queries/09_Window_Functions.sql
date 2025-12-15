@@ -1,27 +1,28 @@
-
 SELECT 
-    c.first_name || ' ' || c.last_name AS Customer_Name,
-    COUNT(o.order_id) as Total_Orders,
-    SUM(o.total_amount) as Total_Spent,
-    DENSE_RANK() OVER (ORDER BY SUM(o.total_amount) DESC) as Spending_Rank
-FROM customers c
-JOIN orders o ON c.customer_id = o.customer_id
-GROUP BY c.customer_id, c.first_name, c.last_name
+    p.full_name,
+    COUNT(b.booking_id) AS Total_Visits,
+    SUM(pay.amount) AS Total_Spent,
+    DENSE_RANK() OVER (ORDER BY SUM(pay.amount) DESC) AS Spending_Rank
+FROM patients p
+JOIN bookings b ON p.user_id = b.patient_id
+JOIN payments pay ON b.booking_id = pay.booking_id
+GROUP BY p.user_id, p.full_name
 FETCH FIRST 10 ROWS ONLY;
 
 SELECT 
-    order_id,
-    order_date,
-    total_amount,
-    LAG(total_amount, 1, 0) OVER (ORDER BY order_date) as Previous_Order_Amt,
-    total_amount - LAG(total_amount, 1, 0) OVER (ORDER BY order_date) as Difference
-FROM orders
-WHERE status = 'PAID'
+    payment_id,
+    payment_date,
+    amount,
+    LAG(amount, 1, 0) OVER (ORDER BY payment_date) AS Previous_Payment,
+    amount - LAG(amount, 1, 0) OVER (ORDER BY payment_date) AS Diff_From_Last
+FROM payments
+ORDER BY payment_date DESC
 FETCH FIRST 10 ROWS ONLY;
 
 SELECT 
-    category,
-    item_name,
-    price,
-    ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) as Price_Rank_In_Cat
-FROM menu_items;
+    specialization,
+    license_no,
+    rating,
+    hourly_rate,
+    ROW_NUMBER() OVER (PARTITION BY specialization ORDER BY rating DESC) AS Rank_In_Specialty
+FROM nurses;

@@ -1,38 +1,36 @@
-
--- REPORT 1: Sales Performance by Category (Financial Report)
--- Q: Which food category makes the most money?
 SELECT 
-    m.category,
-    COUNT(od.detail_id) AS Total_Items_Sold,
-    TO_CHAR(SUM(m.price * od.quantity), 'L99,999,999') AS Total_Revenue,
-    ROUND(AVG(m.price), 2) AS Avg_Item_Price
-FROM order_details od
-JOIN menu_items m ON od.menu_id = m.menu_id
-GROUP BY m.category
-ORDER BY SUM(m.price * od.quantity) DESC;
+    s.name AS Service_Name,
+    COUNT(b.booking_id) AS Total_Bookings,
+    TO_CHAR(SUM(p.amount), 'L99,999,999') AS Total_Revenue,
+    ROUND(AVG(p.amount), 2) AS Avg_Cost_Per_Visit
+FROM bookings b
+JOIN services s ON b.service_id = s.service_id
+JOIN payments p ON b.booking_id = p.booking_id
+GROUP BY s.name
+ORDER BY SUM(p.amount) DESC;
 
--- REPORT 2: Waiter Performance / Busy Hours (Operational Report)
--- Q: What are our busiest hours of the day?
 SELECT 
-    TO_CHAR(order_date, 'HH24') || ':00' AS Hour_of_Day,
-    COUNT(order_id) AS Orders_Placed,
-    SUM(total_amount) AS Hourly_Revenue
-FROM orders
-WHERE status = 'PAID'
-GROUP BY TO_CHAR(order_date, 'HH24')
-ORDER BY Orders_Placed DESC;
+    TO_CHAR(scheduled_time, 'HH24') || ':00' AS Hour_of_Day,
+    COUNT(booking_id) AS Visit_Volume,
+    SUM(CASE WHEN status = 'COMPLETED' THEN 1 ELSE 0 END) AS Completed_Visits
+FROM bookings
+GROUP BY TO_CHAR(scheduled_time, 'HH24')
+ORDER BY Visit_Volume DESC;
 
--- REPORT 3: "Dead Stock" Inventory Alert (Inventory Report)
--- Q: Which ingredients are running low (below reorder level)?
 SELECT 
-    name AS Ingredient,
-    stock_quantity AS Current_Stock,
-    reorder_level AS Alert_Level,
-    (stock_quantity - reorder_level) AS Gap,
+    b.booking_id,
+    p.full_name AS Patient,
+    s.name AS Service_Required,
+    b.scheduled_time,
+    ROUND(SYSDATE - b.scheduled_time, 1) AS Days_Overdue,
     CASE 
-        WHEN stock_quantity <= reorder_level THEN 'CRITICAL'
-        WHEN stock_quantity <= (reorder_level * 1.5) THEN 'WARNING'
-        ELSE 'OK'
-    END AS Status
-FROM ingredients
-ORDER BY stock_quantity ASC;
+        WHEN (SYSDATE - b.scheduled_time) > 7 THEN 'CRITICAL - Missed > 1 Week'
+        WHEN (SYSDATE - b.scheduled_time) > 1 THEN 'WARNING - Missed > 24 Hours'
+        ELSE 'Review Needed'
+    END AS Compliance_Status
+FROM bookings b
+JOIN patients p ON b.patient_id = p.user_id
+JOIN services s ON b.service_id = s.service_id
+WHERE b.status = 'PENDING' 
+AND b.scheduled_time < SYSDATE
+ORDER BY b.scheduled_time ASC;
