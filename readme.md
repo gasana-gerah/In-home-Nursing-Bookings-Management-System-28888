@@ -38,11 +38,11 @@ This repository is organized according to the 8-Phase Capstone Project structure
 * **Explanation:** The Business Process Model (BPMN) illustrates the end-to-end flow from **"Patient Booking Request"** to **"Nurse Dispatch"** and final **"Visit Log Verification."** It includes automated decision nodes for validating nurse availability and compliance.
 * **📄 Documentation:**
 * [View Business Process Model (BPMN Explanation)](documentation/Modeling_Explanation_28888_Gasana_Gerardine_NursingBooking_Process.pdf)
-* [View System Architecture](https://www.google.com/search?q=documentation/architecture.md)
+* [View System Architecture](documentation/architecture.md)
 
 
 * **🖼️ Evidence (BPMN Diagram):**
-
+    ![BPMN Diagram](screenshots/database_objects/bpmn_io.jpeg)
 ---
 
 ## **PHASE III: Logical Database Design**
