@@ -42,7 +42,6 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 
 * **🖼️ Evidence (BPMN Diagram):**
----
     ![BPMN Diagram](screenshots/database_objects/bpmn_io.jpeg)
 ---
 ## **PHASE III: Logical Database Design**
