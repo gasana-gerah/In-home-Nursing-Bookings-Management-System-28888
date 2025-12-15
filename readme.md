@@ -54,6 +54,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 
 * **🖼️ Evidence (ER Diagram):**
+    ![BPMN Diagram](screenshots/database_objects/erd.jpeg)
 
 ---
 
