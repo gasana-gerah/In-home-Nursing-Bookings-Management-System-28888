@@ -2,7 +2,8 @@
 
 ---
 
-**Student Information** **Name:** Gerardine GASANA
+**Student Information**
+* **Name:** Gerardine GASANA
 * **Student ID:** 28888
 * **Institution:** Adventist University of Central Africa (AUCA)
 * **Course:** Database Development with PL/SQL (INSY 8311)
@@ -19,7 +20,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 ---
 
-**PHASE I: Problem Identification*** **Current Issue:** Manual phone coordination for home care leads to double-bookings and dangerous missed visits.
+## **PHASE I: Problem Identification*** **Current Issue:** Manual phone coordination for home care leads to double-bookings and dangerous missed visits.
 * **Pain Points:** Lack of audit trails makes compliance impossible; manual nurse matching is slow and geographically inefficient.
 * **Key Goals:**
 * Reduce double bookings to **0** via database constraints.
@@ -31,7 +32,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 ---
 
-**PHASE II: Business Process Modeling**
+## **PHASE II: Business Process Modeling**
 **Objective:** Model the business flow and system architecture.
 
 * **Explanation:** The Business Process Model (BPMN) illustrates the end-to-end flow from **"Patient Booking Request"** to **"Nurse Dispatch"** and final **"Visit Log Verification."** It includes automated decision nodes for validating nurse availability and compliance.
@@ -44,7 +45,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 ---
 
-**PHASE III: Logical Database Design**
+## **PHASE III: Logical Database Design**
 **Objective:** Design a normalized Entity-Relationship (ER) model.
 
 * **Explanation:** The database uses a **3NF schema** to ensure data integrity. The Logical Data Model details all core entities (**Patients, Nurses, Bookings, Services, Visit Logs**) and their relationships.
@@ -57,7 +58,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 ---
 
-**PHASE IV: Database Creation**
+## **PHASE IV: Database Creation**
 **Objective:** Configure the Oracle PDB and Environment.
 
 * **Explanation:** Created the `NURSING_DB` pluggable database, configured `TBS_NURSING_DATA` tablespaces, and established the `ADMIN_NURSE` user with appropriate privileges.
@@ -65,7 +66,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 ---
 
-**PHASE V: Table Implementation & Data**
+## **PHASE V: Table Implementation & Data**
 **Objective:** Create physical tables and populate with realistic data.
 
 * **Explanation:** 10 Tables were created including `BOOKINGS` (Fact Table) and `ADMIN_CONFIG` (Control Table). A PL/SQL loop generated **500+ realistic booking records** with varying statuses (Completed, Cancelled, Pending) to simulate real-world usage.
@@ -74,7 +75,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 ---
 
-**PHASE VI: PL/SQL Development**
+## **PHASE VI: PL/SQL Development**
 **Objective:** Develop Procedures, Functions, and Packages.
 
 * **Explanation:** All core logic is encapsulated in the `PKG_NURSING_OPS` package.
@@ -87,7 +88,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 ---
 
-**PHASE VII: Advanced Programming & Security**
+## **PHASE VII: Advanced Programming & Security**
 **Objective:** Implement Triggers, Auditing, and Restriction Rules.
 
 * **CRITICAL RULE:** Administrative changes to `ADMIN_CONFIG` (e.g., Pay Rates) are **BLOCKED** on Weekdays (Mon-Fri) to ensure stability during peak operations.
@@ -102,7 +103,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 ---
 
-**PHASE VIII: BI & Analytics**
+## **PHASE VIII: BI & Analytics**
 **Objective:** Dashboards, KPIs, and Performance Tuning.
 
 * **Explanation:** Analytical queries track **Nurse Utilization Rates** and **Missed Visit Ratios**. Performance is optimized using indexes on `scheduled_time` and `nurse_id`.
