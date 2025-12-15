@@ -62,7 +62,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 **Objective:** Configure the Oracle PDB and Environment.
 
 * **Explanation:** Created the `NURSING_DB` pluggable database, configured `TBS_NURSING_DATA` tablespaces, and established the `ADMIN_NURSE` user with appropriate privileges.
-* **📂 Files:** [View Admin Scripts](https://www.google.com/search?q=database/scripts/01_Database_Setup.sql)
+* **📂 Files:** [View Admin Scripts](database/scripts/01_Database_Setup.sql)
 
 ---
 
@@ -70,7 +70,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 **Objective:** Create physical tables and populate with realistic data.
 
 * **Explanation:** 10 Tables were created including `BOOKINGS` (Fact Table) and `ADMIN_CONFIG` (Control Table). A PL/SQL loop generated **500+ realistic booking records** with varying statuses (Completed, Cancelled, Pending) to simulate real-world usage.
-* **📂 Code:** [Create Tables](https://www.google.com/search?q=database/scripts/03_Create_Tables.sql) | [Insert Data Script](https://www.google.com/search?q=database/scripts/04_Insert_Data.sql)
+* **📂 Code:** [Create Tables](database/scripts/03_Create_Tables.sql) | [Insert Data Script](database/scripts/04_Insert_Data.sql)
 * **🖼️ Evidence (500+ Rows Generated):**
 
 ---
@@ -84,7 +84,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 * `fn_calculate_cost`: Computes fees based on Service Type and Duration.
 
 
-* **📂 Code:** [Package Specification](https://www.google.com/search?q=database/scripts/06_Package_Spec.sql) | [Package Body](https://www.google.com/search?q=database/scripts/07_Package_Body.sql)
+* **📂 Code:** [Package Specification](database/scripts/06_Package_Spec.sql) | [Package Body](database/scripts/07_Package_Body.sql)
 
 ---
 
@@ -93,7 +93,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 
 * **CRITICAL RULE:** Administrative changes to `ADMIN_CONFIG` (e.g., Pay Rates) are **BLOCKED** on Weekdays (Mon-Fri) to ensure stability during peak operations.
 * **Auditing:** All sensitive changes to Booking Status are logged via an **Autonomous Trigger** into `AUDIT_LOGS`.
-* **📂 Code:** [Restriction Trigger](https://www.google.com/search?q=database/scripts/11_Restriction_Trigger.sql) | [Audit Trigger](https://www.google.com/search?q=database/scripts/12_Audit_Trigger.sql)
+* **📂 Code:** [Restriction Trigger](database/scripts/11_Restriction_Trigger.sql) | [Audit Trigger](database/scripts/12_Audit_Trigger.sql)
 
 **🖼️ Evidence 1: System Blocking a Weekday Config Change**
 *(The system correctly throws Error ORA-20005: "Maintenance Prohibited on Weekdays")*
@@ -107,8 +107,8 @@ This repository is organized according to the 8-Phase Capstone Project structure
 **Objective:** Dashboards, KPIs, and Performance Tuning.
 
 * **Explanation:** Analytical queries track **Nurse Utilization Rates** and **Missed Visit Ratios**. Performance is optimized using indexes on `scheduled_time` and `nurse_id`.
-* **📂 Code:** [BI Reporting Queries](https://www.google.com/search?q=queries/bi_reporting_queries.sql)
-* **📄 Full Report:** [View BI Dashboard Mockups (PDF)](https://www.google.com/search?q=business_intelligence/dashboards.pdf)
+* **📂 Code:** [BI Reporting Queries](queries/bi_reporting_queries.sql)
+* **📄 Full Report:** [View BI Dashboard Mockups (PDF)](business_intelligence/dashboards.pdf)
 
 **🖼️ Evidence 1: Nurse Utilization (Visits per Specialist)**
 *(Generated from Phase VIII Analytics)*
