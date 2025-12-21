@@ -114,7 +114,7 @@ This repository is organized according to the 8-Phase Capstone Project structure
 **Objective:** Dashboards, KPIs, and Performance Tuning.
 
 * **Explanation:** Analytical queries track **Nurse Utilization Rates** and **Missed Visit Ratios**. Performance is optimized using indexes on `scheduled_time` and `nurse_id`.
-* **📂 Code:** [BI Reporting Queries](queries/bi_reporting_queries.sql)
+* **📂 Code:** [BI Reporting Queries](queries/14_Phase8_Reports.sql)
 * **📄 Full Report:** [View BI Dashboard Mockups (PDF)](business_intelligence/dashboards.pdf)
 
 **🖼️ Evidence 1: Nurse Utilization (Visits per Specialist)**
